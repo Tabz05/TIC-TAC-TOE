@@ -11,8 +11,8 @@ android {
         applicationId "com.tabish.tictactoe"
         minSdkVersion 16
         targetSdkVersion 31
-        versionCode 24
-        versionName "7.2"
+        versionCode 25
+        versionName "8.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
