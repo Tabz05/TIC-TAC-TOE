@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SignIn">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_form"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
+
+        <TextView
+            android:id="@+id/signInTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/purple_700"
+            android:textSize="22sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6" />
+
+        <EditText
+            android:id="@+id/emailSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:ems="10"
+            android:hint="Enter Email Id"
+            android:textColorHint="@color/gray"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/rounded_edit_text"
+            android:textColor="@color/black" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+        <LinearLayout
+            android:id="@+id/passSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5.25"
+            android:orientation="horizontal"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_edit_text">
+
+            <EditText
+                android:id="@+id/passSignInText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:ems="10"
+                android:hint="Enter Password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/hideUnhidePass"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/show"
+                android:onClick="hideOrUnhide">
+
+            </ImageView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25">
+
+            </Space>
+
+        </LinearLayout>
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2" />
+
+
+        <Button
+            android:id="@+id/signInButton"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:onClick="SignInClicked"
+            android:text="Sign In"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:backgroundTint="@color/darkPinkRed" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8" />
+
+        <TextView
+            android:id="@+id/ForgotPasswordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="forgotPasswordClick"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:text="Forgot Password?"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/red"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25" />
+
+        <TextView
+            android:id="@+id/SignUpText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="signUpClick"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:text="Don't have an account? Sign Up"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/blue"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

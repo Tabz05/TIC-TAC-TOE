@@ -1,0 +1,200 @@
+package com.tabish.tictactoe;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import android.Manifest;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import java.util.HashMap;
+import java.util.Map;
+
+public class picUpload extends AppCompatActivity {
+
+    private FirebaseAuth frbAuth;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore db;
+
+    private Uri selectedImage;
+
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
+    private ImageView imageView;
+
+    private long x;
+
+    private void getPhoto()
+    {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        someActivityResultLauncher.launch(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+
+                getPhoto();
+            }
+        }
+    }
+
+    public void uploadPic (View view)
+    {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) { //checking if permission for gallery has been granted or not
+
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        } else
+        {
+            getPhoto();
+        }
+    }
+
+    public void submitPic(View view)
+    {
+        ProgressDialog progressDialog
+                = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading...");
+        progressDialog.show();
+
+        StorageReference ref = storageReference.child("users").child(currentUser.getUid()).child("profilePic");
+
+        ref.putFile(selectedImage).addOnSuccessListener(
+                new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                    @Override
+                    public void onSuccess(
+                            UploadTask.TaskSnapshot taskSnapshot)
+                    {
+                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+                                Map<String, Object> userProfilePic = new HashMap<>();
+                                userProfilePic.put("hasProfilePic", true);
+                                userProfilePic.put("profilePicUri", uri.toString());
+
+                                db.collection("users").document(currentUser.getUid())
+                                        .update(userProfilePic)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+
+                                                progressDialog.dismiss();
+                                                Toast.makeText(picUpload.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
+
+                                                Intent goToMainActivity = new Intent(getApplicationContext(),MainActivity.class);
+
+                                                startActivity(goToMainActivity);
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        });
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+
+                            }
+                        });
+                    }
+                })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e)
+                    {
+                        progressDialog.dismiss();
+                        Toast.makeText(picUpload.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnProgressListener(
+                        new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                            @Override
+                            public void onProgress(
+                                    UploadTask.TaskSnapshot taskSnapshot)
+                            {
+                                double progress
+                                        = (100.0
+                                        * taskSnapshot.getBytesTransferred()
+                                        / taskSnapshot.getTotalByteCount());
+                                progressDialog.setMessage("Uploaded " + (int)progress + "%");
+                            }
+                        });
+
+
+    }
+
+    public void skipPicUpload (View view)
+    {
+        Intent goToMainActivity = new Intent(getApplicationContext(),MainActivity.class);
+
+        startActivity(goToMainActivity);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pic_upload);
+
+        frbAuth = FirebaseAuth.getInstance();
+        currentUser = frbAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+        imageView = findViewById(R.id.imageView);
+    }
+
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+
+                        Intent data = result.getData();
+
+                        selectedImage = data.getData();
+
+                        Glide.with(getApplicationContext()).asBitmap().load(selectedImage.toString()).apply(RequestOptions.circleCropTransform()).into(imageView);
+
+                    }
+                }
+            });
+}

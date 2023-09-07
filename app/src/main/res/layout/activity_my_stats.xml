@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".myStats">
+
+    <ScrollView
+        android:id="@+id/myStatsScollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/myProfileButtonsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <lecho.lib.hellocharts.view.PieChartView
+                    android:id="@+id/overallChart"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="2" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+
+                </Space>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout1Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/peach">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/red">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/pink_purple">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+                </Space>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout1Text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/overallGamesWon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top|start"
+                        android:text="Games Won:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/overallGamesLost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Lost:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/overallGamesDraw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Draw:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+                </Space>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutTurns1Text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/overallFirstTurnsBar"
+                    android:layout_width="0dp"
+                    android:layout_height="12dp"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/overallSecondTurnsBar"
+                    android:layout_width="0dp"
+                    android:layout_height="12dp"
+                    android:layout_weight="1"
+                    android:background="@color/darkPinkRed"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutTurns1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/firstTurnsOverAllIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/overallFirstTurnsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="First turns:"
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
+
+                </TextView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </Space>
+
+
+                <TextView
+                    android:id="@+id/secondTurnsOverAllIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@color/darkPinkRed"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/overallSecondTurnsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="Second turns:"
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <lecho.lib.hellocharts.view.PieChartView
+                    android:id="@+id/singleChart"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="2" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+                </Space>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout2Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/green">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/yellow">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/sea_blue">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+                </Space>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout2Text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/singleGamesWon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Won:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/singleGamesLost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Lost:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/singleGamesDraw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Draw:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+                </Space>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayout2Turns1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/singleFirstTurnsBar"
+                    android:layout_width="0dp"
+                    android:layout_height="12dp"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/singleSecondTurnsBar"
+                    android:layout_width="0dp"
+                    android:layout_height="12dp"
+                    android:layout_weight="1"
+                    android:background="@color/darkPinkRed"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutTurns2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/firstTurnsSingleIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/singleFirstTurnsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="First turns:"
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
+
+                </TextView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </Space>
+
+                <TextView
+                    android:id="@+id/secondTurnsSingleIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@color/darkPinkRed"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/singleSecondTurnsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="Second turns:"
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <lecho.lib.hellocharts.view.PieChartView
+                    android:id="@+id/multiChart"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="2" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+
+                </Space>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout3Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/oliveGold">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/orange">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/brown">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+
+                </Space>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout3Text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/multiGamesWon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Won:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/multiGamesLost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Lost:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/multiGamesDraw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="top"
+                        android:text="Games Draw:"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05">
+
+                </Space>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutTurns3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/multiFirstTurnsBar"
+                    android:layout_width="0dp"
+                    android:layout_height="12dp"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/multiSecondTurnsBar"
+                    android:layout_width="0dp"
+                    android:layout_height="12dp"
+                    android:layout_weight="1"
+                    android:background="@color/darkPinkRed"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutTurns3Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/firstTurnsMultiIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/multiFirstTurnsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="First turns:"
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
+
+                </TextView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </Space>
+
+                <TextView
+                    android:id="@+id/SecondTurnsMultiIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@color/darkPinkRed"
+                    android:textColor="@color/white"
+                    android:textSize="12sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/multiSecondTurnsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="Second turns:"
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="20dp">
+
+            </Space>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

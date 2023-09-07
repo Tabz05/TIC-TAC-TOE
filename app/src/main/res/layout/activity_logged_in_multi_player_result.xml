@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".LoggedInMultiPlayerResult">
+
+    <Button
+        android:id="@+id/buttonLoggedInMultiPlayAgain"
+        android:layout_width="133dp"
+        android:layout_height="77dp"
+        android:enabled="false"
+        android:onClick="loggedInMultiPlayAgain"
+        android:text="Play Again"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:backgroundTint="@color/darkPinkRed"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLoggedInMultiHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/winnerImage" />
+
+    <Button
+        android:id="@+id/buttonLoggedInMultiHome"
+        android:layout_width="133dp"
+        android:layout_height="77dp"
+        android:enabled="false"
+        android:onClick="loggedInMultiHome"
+        android:text="Home"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:backgroundTint="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoggedInMultiPlayAgain" />
+
+    <ImageView
+        android:id="@+id/winnerImage"
+        android:layout_width="240dp"
+        android:layout_height="190dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLoggedInMultiPlayAgain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loggedInMultiResult"
+        app:srcCompat="@drawable/profilepic"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <TextView
+        android:id="@+id/loggedInMultiResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/winnerImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
